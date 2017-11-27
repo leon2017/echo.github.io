@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-24T10:13:31.000Z</updated>
+  <updated>2017-11-27T02:30:13.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JAVA8使用笔记（二）</title>
+    <link href="http://yoursite.com/2017/11/27/Java8%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0(%E4%BA%8C%EF%BC%89/"/>
+    <id>http://yoursite.com/2017/11/27/Java8使用笔记(二）/</id>
+    <published>2017-11-27T02:20:20.000Z</published>
+    <updated>2017-11-27T02:30:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><ul>
+<li>reduce<blockquote>
+<p>1 、元素求和操作</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 普通的for-each求和方式</span></div><div class="line"><span class="keyword">public</span> <span class="literal">void</span> sumReduce()&#123;</div><div class="line">        <span class="built_in">List</span>&lt;<span class="built_in">Integer</span>&gt; testList = Arrays.asList(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>);</div><div class="line">        int <span class="keyword">sum</span> = <span class="number">0</span>;</div><div class="line">        for (<span class="built_in">Integer</span> <span class="built_in">integer</span> : testList) &#123;</div><div class="line">            <span class="keyword">sum</span> += <span class="built_in">integer</span>;</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="keyword">sum</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// reduce 进行求和操作</span></div><div class="line"><span class="type">int</span> tempSum = testList.<span class="keyword">stream</span>()</div><div class="line">                .reduce(<span class="number">0</span>, (a, b) -&gt; a + b);</div><div class="line">System.<span class="keyword">out</span>.println(tempSum);</div><div class="line"><span class="comment">// 输出19</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>reduce接受两个参数：<br>1.一个初始值，这里给的是0，<br>2.一个BinaryOperator<t> 来将两个进行组合产生新的值。这里我们用的是（a,b）-&gt; a+b进行求和</t></p>
+<p>reduce还有一个重载的方法，他不接受初始值，但会返回一个Optional对象</p>
+</blockquote>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Optional&lt;Integer&gt; optional = testList.stream()</div><div class="line">                .reduce<span class="function"><span class="params">((a, b) -&gt; a * b)</span>;</span></div><div class="line"><span class="title">optional</span>.<span class="title">ifPresent</span><span class="params">(p -&gt; &#123;</span></div><div class="line">            System.out.println(p);</div><div class="line">        &#125;);</div><div class="line">// 输出 360</div></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>最大值和最小值<br>如果我们希望能够在给定的集合中求出最大值的话。我们可以这样写，reduce操作会针对流中的元素进行比对，并产生一个新的最大值，指导整个流消耗完。如果要计算最小值得话需要Integer:min来替换Integer:max就好了</li>
+</ol>
+</blockquote>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//max</span></div><div class="line"><span class="selector-tag">testList</span><span class="selector-class">.stream</span>()</div><div class="line">                <span class="selector-class">.reduce</span>(<span class="attribute">Integer</span>::max)</div><div class="line">                <span class="selector-class">.ifPresent</span>(m -&gt; System.out.println(m));</div><div class="line"><span class="comment">// 输出 6</span></div></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">testList</span><span class="selector-class">.stream</span>()</div><div class="line">                <span class="selector-class">.reduce</span>(<span class="attribute">Integer</span>::min)</div><div class="line">                <span class="selector-class">.ifPresent</span>(m -&gt; System.out.println(m));</div><div class="line"><span class="comment">// 输出1</span></div></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 当然我们可以使用三位运算</span></div><div class="line">        <span class="selector-tag">testList</span><span class="selector-class">.stream</span>()</div><div class="line">                <span class="selector-class">.reduce</span>((x,y)-&gt; x&lt; y? <span class="attribute">x</span>:y)</div><div class="line">                <span class="selector-class">.ifPresent</span>(y-&gt; System.out.println(y));</div><div class="line"><span class="comment">// 输出1</span></div></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用Integer::compareTo比较操作</span></div><div class="line"><span class="selector-tag">testList</span><span class="selector-class">.stream</span>()</div><div class="line">                <span class="selector-class">.reduce</span>(<span class="attribute">Integer</span>::compareTo)</div><div class="line">                <span class="selector-class">.ifPresent</span>(x-&gt; System.out.println(x));</div><div class="line"><span class="comment">// 输出-1</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>注： stream并不适合做并行操作，如果需要并行求和时候，可以将stream()换成parallelStream()  </p>
+<p>3.数值流操作</p>
+</blockquote>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 求和操作</span></div><div class="line"> <span class="keyword">Integer</span> sum1 = testList.stream()</div><div class="line">                .map(d -&gt; d * <span class="number">10</span>)</div><div class="line">                .reduce(<span class="number">0</span>, <span class="keyword">Integer</span>::<span class="keyword">sum</span>);</div><div class="line"> <span class="keyword">System</span>.out.println(sum1);</div><div class="line"> <span class="comment">//输出190</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的代码我们知道了reduce的求和操作，但是我们发现reduce对元素类型进行了装箱再进行求和操作。如果我们想进行原始类型流的转换我们可以试一试下面的方法。</p>
+</blockquote>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//求和</span></div><div class="line"><span class="type">int</span> sum2 = testList.<span class="keyword">stream</span>()</div><div class="line">                .mapToInt(d -&gt; d * <span class="number">10</span>)</div><div class="line">                .sum();</div><div class="line">System.<span class="keyword">out</span>.println(sum2);</div><div class="line"><span class="comment">//输出190</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>这段代码我们知道我们可以通过mapToInt对原始类型的流进行求和操作。当然不仅有mapToInt，还有mapToDouble、mapToLong。</p>
+</blockquote>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">IntStream intStream = testList.<span class="keyword">stream</span>()</div><div class="line">IntStream intStream = testList.<span class="keyword">stream</span>()</div><div class="line">               .mapToInt(d -&gt; d * <span class="number">10</span>);</div><div class="line">OptionalInt <span class="built_in">max</span> = intStream.<span class="built_in">max</span>();</div><div class="line"><span class="type">int</span> asInt = <span class="built_in">max</span>.getAsInt();</div><div class="line">System.<span class="keyword">out</span>.println(asInt);</div><div class="line"><span class="comment">//输出60</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>mapToInt等对流的操作返回的是一个IntStream流，如果你要进行最大操作，可以使用max()，他返回的是一个OptionalInt，他属于Optional类特别的版本：OptionalInt、OptionalLong、OptionalDouble</p>
+</blockquote>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">int</span> <span class="built_in">max1</span> = testList.stream()</div><div class="line">                .mapToInt(d -&gt; d * <span class="number">10</span>)</div><div class="line">                .<span class="built_in">max</span>()</div><div class="line">                .orElse(<span class="number">100</span>);</div><div class="line">System.<span class="keyword">out</span>.println(<span class="built_in">max1</span>);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如上，如果你不知道有没有最大值的话 ，你想给他定义一个默认最大值的话，可以利用orElse对其进行操作</p>
+</blockquote>
+<h3 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h3><blockquote>
+<p>Java8引入了可以用于IntStream和LongStream可以帮助生成数值的范围range和rangeClose。这两个方法第一个参数接受起始值，第二个参数接受结束值。但是range是不包含结束值，而rangeClosed则包含结束值。  </p>
+</blockquote>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">long</span> <span class="keyword">count</span> = IntStream.range(<span class="number">1</span>, <span class="number">10</span>)</div><div class="line">               .<span class="keyword">count</span>();</div><div class="line">System.out.<span class="keyword">println</span>(<span class="keyword">count</span>);</div><div class="line"><span class="comment">//输出9</span></div><div class="line"></div><div class="line"><span class="keyword">long</span> count1 = IntStream.rangeClosed(<span class="number">1</span>, <span class="number">10</span>)</div><div class="line">               .<span class="keyword">count</span>();</div><div class="line">System.out.<span class="keyword">println</span>(count1);</div><div class="line"><span class="comment">//输出10</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;操作符&quot;&gt;&lt;a href=&quot;#操作符&quot; class=&quot;headerlink&quot; title=&quot;操作符&quot;&gt;&lt;/a&gt;操作符&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;reduce&lt;blockquote&gt;
+&lt;p&gt;1 、元素求和操作&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul
+    
+    </summary>
+    
+      <category term="JAVA8" scheme="http://yoursite.com/categories/JAVA8/"/>
+    
+    
+      <category term="JAVA8使用笔记" scheme="http://yoursite.com/tags/JAVA8%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>JAVA8使用笔记（一）</title>
@@ -346,7 +419,7 @@
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>Markdown 语法：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">email <span class="xml"><span class="tag">&lt;<span class="name">example@example.com</span>&gt;</span></span></div><div class="line">[<span class="string">GitHub</span>](<span class="link">http://github.com</span>)</div><div class="line">自动生成连接  <span class="xml"><span class="tag">&lt;<span class="name">http:</span>//<span class="attr">www.github.com</span>/&gt;</span></span></div></pre></td></tr></table></figure>
 <p>效果如下：</p>
-<p>Email 连接： <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#58;&#101;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#x6f;&#x6d;">&#101;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#x6f;&#x6d;</a><br><a href="http://github.com" target="_blank" rel="external">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="external">http://www.github.com/</a> 这样</p>
+<p>Email 连接： <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x65;&#120;&#x61;&#109;&#x70;&#108;&#101;&#x40;&#101;&#120;&#97;&#x6d;&#112;&#108;&#x65;&#x2e;&#99;&#111;&#109;">&#x65;&#120;&#x61;&#109;&#x70;&#108;&#101;&#x40;&#101;&#120;&#97;&#x6d;&#112;&#108;&#x65;&#x2e;&#99;&#111;&#109;</a><br><a href="http://github.com" target="_blank" rel="external">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="external">http://www.github.com/</a> 这样</p>
 <h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><p>Markdown 语法：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">某某说:</div><div class="line"><span class="meta">&gt;</span><span class="bash"> 第一行引用</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 第二行费用文字</span></div></pre></td></tr></table></figure>
 <p>效果如下：</p>
@@ -464,7 +537,7 @@
 &lt;h2 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot; class=&quot;headerlink&quot; title=&quot;链接&quot;&gt;&lt;/a&gt;链接&lt;/h2&gt;&lt;p&gt;Markdown 语法：&lt;/p&gt;
 &lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;email &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;example@example.com&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;string&quot;&gt;GitHub&lt;/span&gt;](&lt;span class=&quot;link&quot;&gt;http://github.com&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;自动生成连接  &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;http:&lt;/span&gt;//&lt;span class=&quot;attr&quot;&gt;www.github.com&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;效果如下：&lt;/p&gt;
-&lt;p&gt;Email 连接： &lt;a href=&quot;&amp;#109;&amp;#x61;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#108;&amp;#101;&amp;#x40;&amp;#x65;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#108;&amp;#x65;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#x6d;&quot;&gt;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#x70;&amp;#108;&amp;#101;&amp;#x40;&amp;#x65;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#108;&amp;#x65;&amp;#46;&amp;#x63;&amp;#x6f;&amp;#x6d;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://github.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;连接标题Github网站&lt;/a&gt;&lt;br&gt;自动生成连接像： &lt;a href=&quot;http://www.github.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.github.com/&lt;/a&gt; 这样&lt;/p&gt;
+&lt;p&gt;Email 连接： &lt;a href=&quot;&amp;#109;&amp;#x61;&amp;#x69;&amp;#108;&amp;#x74;&amp;#111;&amp;#58;&amp;#x65;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#108;&amp;#101;&amp;#x40;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#112;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#111;&amp;#109;&quot;&gt;&amp;#x65;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#108;&amp;#101;&amp;#x40;&amp;#101;&amp;#120;&amp;#97;&amp;#x6d;&amp;#112;&amp;#108;&amp;#x65;&amp;#x2e;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://github.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;连接标题Github网站&lt;/a&gt;&lt;br&gt;自动生成连接像： &lt;a href=&quot;http://www.github.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.github.com/&lt;/a&gt; 这样&lt;/p&gt;
 &lt;h2 id=&quot;区块引用&quot;&gt;&lt;a href=&quot;#区块引用&quot; class=&quot;headerlink&quot; title=&quot;区块引用&quot;&gt;&lt;/a&gt;区块引用&lt;/h2&gt;&lt;p&gt;Markdown 语法：&lt;/p&gt;
 &lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;某某说:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; 第一行引用&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; 第二行费用文字&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;效果如下：&lt;/p&gt;
