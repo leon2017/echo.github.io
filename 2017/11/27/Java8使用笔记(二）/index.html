@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://leoncommons.cn/2017/11/27/Java8使用笔记(二）/index.html">
 <meta property="og:site_name" content="看见LEON">
 <meta property="og:description" content="操作符 reduce 1 、元素求和操作    123456789// 普通的for-each求和方式public void sumReduce()&amp;#123;        List&amp;lt;Integer&amp;gt; testList = Arrays.asList(1,3,4,5,6);        int sum = 0;        for (Integer integer : testL">
-<meta property="og:updated_time" content="2017-11-27T07:32:50.000Z">
+<meta property="og:updated_time" content="2017-12-06T08:01:35.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA8使用笔记（二）">
 <meta name="twitter:description" content="操作符 reduce 1 、元素求和操作    123456789// 普通的for-each求和方式public void sumReduce()&amp;#123;        List&amp;lt;Integer&amp;gt; testList = Arrays.asList(1,3,4,5,6);        int sum = 0;        for (Integer integer : testL">
@@ -364,7 +364,7 @@
 <figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// reduce 进行求和操作</span></div><div class="line"><span class="type">int</span> tempSum = testList.<span class="keyword">stream</span>()</div><div class="line">                .reduce(<span class="number">0</span>, (a, b) -&gt; a + b);</div><div class="line">System.<span class="keyword">out</span>.println(tempSum);</div><div class="line"><span class="comment">// 输出19</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>reduce接受两个参数：<br>1.一个初始值，这里给的是0，<br>2.一个BinaryOperator<t> 来将两个进行组合产生新的值。这里我们用的是（a,b）-&gt; a+b进行求和</t></p>
-<p>reduce还有一个重载的方法，他不接受初始值，但会返回一个Optional对象</p>
+<p>reduce还有一个重载的方法，他不接受初始值，但会返回一个Optional对象<br><a id="more"></a></p>
 </blockquote>
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Optional&lt;Integer&gt; optional = testList.stream()</div><div class="line">                .reduce<span class="function"><span class="params">((a, b) -&gt; a * b)</span>;</span></div><div class="line"><span class="title">optional</span>.<span class="title">ifPresent</span><span class="params">(p -&gt; &#123;</span></div><div class="line">            System.out.println(p);</div><div class="line">        &#125;);</div><div class="line">// 输出 360</div></pre></td></tr></table></figure>
 <blockquote>

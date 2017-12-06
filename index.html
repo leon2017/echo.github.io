@@ -356,17 +356,14 @@
 
       
         
-          
-          Calabash-Android环境搭建
-本文系统环境基于Mac OX
-
-安装ruby
-正常mac系统下已经安装过ruby了，如果没有安装请安装ruby，calabash支持需要ruby&gt;=2.0。       
-
-安装ruby
-1brew install ruby
-安装Android SDK
-          ...
+          <h2 id="Calabash-Android环境搭建"><a href="#Calabash-Android环境搭建" class="headerlink" title="Calabash-Android环境搭建"></a>Calabash-Android环境搭建</h2><blockquote>
+<p>本文系统环境基于Mac OX</p>
+</blockquote>
+<h3 id="安装ruby"><a href="#安装ruby" class="headerlink" title="安装ruby"></a>安装ruby</h3><blockquote>
+<p>正常mac系统下已经安装过ruby了，如果没有安装请安装ruby，calabash支持需要ruby&gt;=2.0。       </p>
+</blockquote>
+<p>安装ruby</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>ruby</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/12/01/Calabash-Android使用教程(一）/#more" rel="contents">
@@ -523,15 +520,17 @@
 
       
         
-          
-          操作符
-reduce
-1 、元素求和操作
-
-
-
-123456789// 普通的for-each求和方式public void sumReduce()&#123;        List&lt;Integer&gt; testList = Arrays.asList(1,3,4,5,6);      
-          ...
+          <h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><ul>
+<li>reduce<blockquote>
+<p>1 、元素求和操作</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 普通的for-each求和方式</span></div><div class="line"><span class="keyword">public</span> <span class="literal">void</span> sumReduce()&#123;</div><div class="line">        <span class="built_in">List</span>&lt;<span class="built_in">Integer</span>&gt; testList = Arrays.asList(<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>);</div><div class="line">        int <span class="keyword">sum</span> = <span class="number">0</span>;</div><div class="line">        for (<span class="built_in">Integer</span> <span class="built_in">integer</span> : testList) &#123;</div><div class="line">            <span class="keyword">sum</span> += <span class="built_in">integer</span>;</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="keyword">sum</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// reduce 进行求和操作</span></div><div class="line"><span class="type">int</span> tempSum = testList.<span class="keyword">stream</span>()</div><div class="line">                .reduce(<span class="number">0</span>, (a, b) -&gt; a + b);</div><div class="line">System.<span class="keyword">out</span>.println(tempSum);</div><div class="line"><span class="comment">// 输出19</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>reduce接受两个参数：<br>1.一个初始值，这里给的是0，<br>2.一个BinaryOperator<t> 来将两个进行组合产生新的值。这里我们用的是（a,b）-&gt; a+b进行求和</t></p>
+<p>reduce还有一个重载的方法，他不接受初始值，但会返回一个Optional对象<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/11/27/Java8使用笔记(二）/#more" rel="contents">
@@ -688,12 +687,10 @@ reduce
 
       
         
-          
-          
-java8 — Stream流操作
-演示代码
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676
-          ...
+          <blockquote>
+<p>java8 — Stream流操作</p>
+<h3 id="演示代码"><a href="#演示代码" class="headerlink" title="演示代码"></a>演示代码</h3></blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// model</span></div><div class="line"><span class="keyword">package</span> com.wangj.java8demo;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dish</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">boolean</span> vegetarian;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> calories;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Type type;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dish</span><span class="params">(String name, <span class="keyword">boolean</span> vegetarian, <span class="keyword">int</span> calories, Type type)</span> </span>&#123; <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.vegetarian = vegetarian;</div><div class="line">        <span class="keyword">this</span>.calories = calories;</div><div class="line">        <span class="keyword">this</span>.type = type;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isVegetarian</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> vegetarian;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCalories</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> calories;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> Type <span class="title">getType</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> type;</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> Type &#123; MEAT, FISH, OTHER &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 演示demo</span></div><div class="line"><span class="keyword">package</span> com.wangj.java8demo;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.stream.Stream;</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.util.stream.Collectors.toList;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestOne</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doIt</span><span class="params">()</span> </span>&#123;</div><div class="line">        List&lt;Dish&gt; menu = Arrays.asList(</div><div class="line">                <span class="keyword">new</span> Dish(<span class="string">"pork"</span>, <span class="keyword">false</span>, <span class="number">800</span>, Dish.Type.MEAT),</div><div class="line">                <span class="keyword">new</span> Dish(<span class="string">"beef"</span>, <span class="keyword">false</span>, <span class="number">700</span>, Dish.Type.MEAT),</div><div class="line">                <span class="keyword">new</span> Dish(<span class="string">"chicken"</span>, <span class="keyword">false</span>, <span class="number">400</span>, Dish.Type.MEAT),</div><div class="line">                <span class="keyword">new</span> Dish(<span class="string">"french fries"</span>, <span class="keyword">true</span>, <span class="number">530</span>, Dish.Type.OTHER),</div><div class="line">                <span class="keyword">new</span> Dish(<span class="string">"rice"</span>, <span class="keyword">true</span>, <span class="number">350</span>, Dish.Type.OTHER),</div><div class="line">                <span class="keyword">new</span> Dish(<span class="string">"season fruit"</span>, <span class="keyword">true</span>, <span class="number">120</span>, Dish.Type.OTHER),</div><div class="line">                <span class="keyword">new</span> Dish(<span class="string">"pizza"</span>, <span class="keyword">true</span>, <span class="number">550</span>, Dish.Type.OTHER),</div><div class="line">                <span class="keyword">new</span> Dish(<span class="string">"prawns"</span>, <span class="keyword">false</span>, <span class="number">300</span>, Dish.Type.FISH),</div><div class="line">                <span class="keyword">new</span> Dish(<span class="string">"salmon"</span>, <span class="keyword">false</span>, <span class="number">450</span>, Dish.Type.FISH));</div><div class="line"></div><div class="line">        List&lt;String&gt; collect = menu.stream()<span class="comment">//从menu获得stream流</span></div><div class="line">                .filter(Dish::isVegetarian) <span class="comment">//筛选出isVegetarian == true的对象</span></div><div class="line">                .map(Dish::getName)<span class="comment">//转换并获取name</span></div><div class="line">                .limit(<span class="number">3</span>)<span class="comment">//只获取前三个</span></div><div class="line">                .collect(toList());<span class="comment">//将结果存在另一个List中</span></div><div class="line">        System.out.println(collect);</div><div class="line">        <span class="comment">//流只能消费一次，要想获取只能获得新的stream重新来一次</span></div><div class="line">        Stream&lt;Dish&gt; menuStream = menu.stream();</div><div class="line">        menuStream.forEach(dish -&gt; System.out.println(dish.getName()));<span class="comment">//采用forEach迭代操作</span></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        TestOne testOne = <span class="keyword">new</span> TestOne();</div><div class="line">        testOne.doIt();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// system out</span></div><div class="line"></div><div class="line">[french fries, rice, season fruit]</div><div class="line">pork</div><div class="line">beef</div><div class="line">chicken</div><div class="line">french fries</div><div class="line">rice</div><div class="line">season fruit</div><div class="line">pizza</div><div class="line">prawns</div><div class="line">salmon</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/11/24/Java8使用笔记(一)/#more" rel="contents">
@@ -850,14 +847,14 @@ java8 — Stream流操作
 
       
         
-          
-          
-本文主要参考hencoder自定义view
-自定义View主要掌握以下四块内容：
-
-View的绘制机制：最主要掌握onMeasure,onLayout,onDraw以及相关类的使用。
-事件分发机制：掌握dispathTouchEvent(),onInterceptEvent(),onTouchEv
-          ...
+          <blockquote>
+<p>本文主要参考<a href="http://hencoder.com/ui-1-1/" target="_blank" rel="external">hencoder自定义view</a></p>
+<p>自定义View主要掌握以下四块内容：</p>
+<ol>
+<li>View的绘制机制：最主要掌握onMeasure,onLayout,onDraw以及相关类的使用。</li>
+<li>事件分发机制：掌握dispathTouchEvent(),onInterceptEvent(),onTouchEvent()三者相关的逻辑。</li>
+<li>属性动画,因为属性动画核心是数值的变化，使用属性动画对值View做动画操作。</li>
+<li>相关手势类
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/11/13/Android自定义View(一)/#more" rel="contents">
@@ -1014,12 +1011,16 @@ View的绘制机制：最主要掌握onMeasure,onLayout,onDraw以及相关类的
 
       
         
-          
-          
-我们知道在5.0以上的机型，例如button点击的时候会有一种涟漪的水波纹效果，当让我们通常的做法是通过设置andrid:background来给这个控件加一个selector,但是这样做并没有达到我们想要看到的水波纹效果。而在5.0之后Android引入了Ripple水波纹的效果。
-
-基本使用（
-          ...
+          <blockquote>
+<p>我们知道在5.0以上的机型，例如button点击的时候会有一种涟漪的水波纹效果，当让我们通常的做法是通过设置andrid:background来给这个控件加一个selector,但是这样做并没有达到我们想要看到的水波纹效果。而在5.0之后Android引入了Ripple水波纹的效果。</p>
+</blockquote>
+<h2 id="基本使用（5-0以上）"><a href="#基本使用（5-0以上）" class="headerlink" title="基本使用（5.0以上）"></a>基本使用（5.0以上）</h2><h3 id="button的默认效果"><a href="#button的默认效果" class="headerlink" title="button的默认效果"></a>button的默认效果</h3><p><img src="http://oxp7ffm1s.bkt.clouddn.com/ripple-normal.gif" alt="image"></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Button</div><div class="line">        android:<span class="attribute">layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        android:<span class="attribute">layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        android:<span class="attribute">text</span>=<span class="string">"button3"</span></div><div class="line">        android:<span class="attribute">textColor</span>=<span class="string">"@color/colorPrimaryDark"</span></div><div class="line">        android:<span class="attribute">textSize</span>=<span class="string">"12sp"</span>/&gt;</div></pre></td></tr></table></figure>
+<p>其实这就是一段很普通的代码，虽然有水波纹效果，但是有没有感觉很难看。</p>
+<h3 id="使用系统的点击Ripple效果"><a href="#使用系统的点击Ripple效果" class="headerlink" title="使用系统的点击Ripple效果"></a>使用系统的点击Ripple效果</h3><blockquote>
+<p>这里我们通过设置android:backgroud来设置ripple的点击效果，主要分为2中效果：</p>
+<ul>
+<li>有边界的水波纹效果<br>这种效果在21以下的机型点击的时候只有普通selector的点击效果
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/12/Android  Material Design之ripple水波纹使用/#more" rel="contents">
@@ -1180,110 +1181,6 @@ View的绘制机制：最主要掌握onMeasure,onLayout,onDraw以及相关类的
 <figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 第一级标题 `&lt;h1&gt;` </div><div class="line">## 第二级标题 `&lt;h2&gt;` </div><div class="line">###### 第六级标题 `&lt;h6&gt;`</div></pre></td></tr></table></figure>
 <h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p>Markdown 语法：</p>
 <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">*这些文字会生成`&lt;em&gt;`*</div><div class="line">_这些文字会生成`&lt;u&gt;`_</div><div class="line"></div><div class="line">**这些文字会生成`&lt;strong&gt;`**</div><div class="line">__这些文字会生成`&lt;strong&gt;`__</div></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p><em>这些文字会生成<code>&lt;em&gt;</code></em><br><em>这些文字会生成<code>&lt;u&gt;</code></em></p>
-<p><strong>这些文字会生成<code>&lt;strong&gt;</code></strong><br><strong>这些文字会生成<code>&lt;strong&gt;</code></strong></p>
-<h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>四个及以上空格加回车。<br>如果不想打这么多空格，只要回车就为换行，请勾选：<code>Preferences</code> - <code>Themes</code> - <code>Translate newlines to &lt;br&gt; tags</code></p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>Markdown 语法：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">* </span>项目一 无序列表 <span class="code">`* + 空格键`</span></div><div class="line"><span class="bullet">* </span>项目二</div><div class="line"><span class="bullet">* </span>项目二的子项目一 无序列表 <span class="code">`TAB + * + 空格键`</span></div><div class="line"><span class="bullet">* </span>项目二的子项目二</div></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<ul>
-<li>项目一 无序列表 <code>* + 空格键</code></li>
-<li>项目二</li>
-<li>项目二的子项目一 无序列表 <code>TAB + * + 空格键</code></li>
-<li>项目二的子项目二</li>
-</ul>
-<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>Markdown 语法：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">1. </span>项目一 有序列表 <span class="code">`数字 + . + 空格键`</span></div><div class="line"><span class="bullet">2. </span>项目二 </div><div class="line"><span class="bullet">3. </span>项目三</div><div class="line"><span class="bullet">1. </span>项目三的子项目一 有序列表 <span class="code">`TAB + 数字 + . + 空格键`</span></div><div class="line"><span class="bullet">2. </span>项目三的子项目二</div></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<ol>
-<li>项目一 有序列表 <code>数字 + . + 空格键</code></li>
-<li>项目二 </li>
-<li>项目三</li>
-<li>项目三的子项目一 有序列表 <code>TAB + 数字 + . + 空格键</code></li>
-<li>项目三的子项目二</li>
-</ol>
-<h3 id="任务列表（Task-lists）"><a href="#任务列表（Task-lists）" class="headerlink" title="任务列表（Task lists）"></a>任务列表（Task lists）</h3><p>Markdown 语法：</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby"> [ ] 任务一 未做任务 <span class="string">`- + 空格 + [ ]`</span></span></div><div class="line">-<span class="ruby"> [x] 任务二 已做任务 <span class="string">`- + 空格 + [x]`</span></span></div></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<ul>
-<li>[ ] 任务一 未做任务 <code>- + 空格 + [ ]</code></li>
-<li>[x] 任务二 已做任务 <code>- + 空格 + [x]</code></li>
-</ul>
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>Markdown 语法：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">![<span class="string">GitHub set up</span>](<span class="link">http://zh.mweb.im/asset/img/set-up-git.gif</span>)</div><div class="line">格式: ![<span class="string">Alt Text</span>](<span class="link">url</span>)</div></pre></td></tr></table></figure>
-<p><code>Control + Shift + I</code> 可插入Markdown语法。<br>如果是 MWeb 的文档库中的文档，还可以用拖放图片、<code>CMD + V</code> 粘贴、<code>CMD + Option + I</code> 导入这三种方式来增加图片。<br>效果如下：</p>
-<p><img src="http://zh.mweb.im/asset/img/set-up-git.gif" alt="GitHub set up"></p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>Markdown 语法：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">email <span class="xml"><span class="tag">&lt;<span class="name">example@example.com</span>&gt;</span></span></div><div class="line">[<span class="string">GitHub</span>](<span class="link">http://github.com</span>)</div><div class="line">自动生成连接  <span class="xml"><span class="tag">&lt;<span class="name">http:</span>//<span class="attr">www.github.com</span>/&gt;</span></span></div></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p>Email 连接： <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#x65;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#64;&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#101;&#46;&#x63;&#111;&#x6d;">&#x65;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#64;&#101;&#120;&#97;&#x6d;&#112;&#x6c;&#101;&#46;&#x63;&#111;&#x6d;</a><br><a href="http://github.com" target="_blank" rel="external">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="external">http://www.github.com/</a> 这样</p>
-<h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><p>Markdown 语法：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">某某说:</div><div class="line"><span class="meta">&gt;</span><span class="bash"> 第一行引用</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 第二行费用文字</span></div></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p>某某说:</p>
-<blockquote>
-<p>第一行引用<br>第二行费用文字</p>
-</blockquote>
-<h2 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h2><p>Markdown 语法：</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">像这样即可：`&lt;addr&gt;` `<span class="keyword">code</span>`</div></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p>像这样即可：<code>&lt;addr&gt;</code> <code>code</code></p>
-<h2 id="多行或者一段代码"><a href="#多行或者一段代码" class="headerlink" title="多行或者一段代码"></a>多行或者一段代码</h2><p>Markdown 语法：</p>
-<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fancyAlert</span>(<span class="params">arg</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(arg) &#123;</div><div class="line">    $.facebox(&#123;<span class="attr">div</span>:<span class="string">'#foo'</span>&#125;)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p><code>CMD + Shift + K</code> 可插入Markdown语法。<br>效果如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fancyAlert</span>(<span class="params">arg</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(arg) &#123;</div><div class="line">    $.facebox(&#123;<span class="attr">div</span>:<span class="string">'#foo'</span>&#125;)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="顺序图或流程图"><a href="#顺序图或流程图" class="headerlink" title="顺序图或流程图"></a>顺序图或流程图</h2><p>Markdown 语法：</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">张三-&gt;李四: 嘿，小四儿, 写博客了没?</div><div class="line">Note right of 李四: 李四愣了一下，说：</div><div class="line">李四--&gt;张三: 忙得吐血，哪有时间写。</div></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">st=&gt;start: 开始</div><div class="line">e=&gt;end: 结束</div><div class="line">op=&gt;operation: 我的操作</div><div class="line">cond=&gt;condition: 确认？</div><div class="line"></div><div class="line">st-&gt;op-&gt;cond</div><div class="line">cond(yes)-&gt;e</div><div class="line">cond(no)-&gt;op</div></pre></td></tr></table></figure>
-</code></pre><p>效果如下（ <code>Preferences</code> - <code>Themes</code> - <code>Enable sequence &amp; flow chart</code> 才会看到效果 ）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">张三-&gt;李四: 嘿，小四儿, 写博客了没?</div><div class="line">Note right of 李四: 李四愣了一下，说：</div><div class="line">李四--&gt;张三: 忙得吐血，哪有时间写。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">st=&gt;start: 开始</div><div class="line">e=&gt;end: 结束</div><div class="line">op=&gt;operation: 我的操作</div><div class="line">cond=&gt;condition: 确认？</div><div class="line"></div><div class="line">st-&gt;op-&gt;cond</div><div class="line">cond(yes)-&gt;e</div><div class="line">cond(no)-&gt;op</div></pre></td></tr></table></figure>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>Markdown 语法：</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">第一格表头 <span class="string">| 第二格表头</span></div><div class="line">--------- <span class="string">| -------------</span></div><div class="line">内容单元格 第一列第一格 <span class="string">| 内容单元格第二列第一格</span></div><div class="line">内容单元格 第一列第二格 多加文字 <span class="string">| 内容单元格第二列第二格</span></div></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<table>
-<thead>
-<tr>
-<th>第一格表头</th>
-<th>第二格表头</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>内容单元格 第一列第一格</td>
-<td>内容单元格第二列第一格</td>
-</tr>
-<tr>
-<td>内容单元格 第一列第二格 多加文字</td>
-<td>内容单元格第二列第二格</td>
-</tr>
-</tbody>
-</table>
-<h2 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h2><p>Markdown 语法：</p>
-<p>加删除线像这样用： <del>删除这些</del></p>
-<p>效果如下：</p>
-<p>加删除线像这样用： <del>删除这些</del></p>
-<h2 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h2><p>以下三种方式都可以生成分隔线：</p>
-<hr>
-<hr>
-<hr>
-<p>效果如下：</p>
-<hr>
-<hr>
-<hr>
-<h2 id="MathJax"><a href="#MathJax" class="headerlink" title="MathJax"></a>MathJax</h2><p>Markdown 语法：</p>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">块级公式：</div><div class="line">$$	x = <span class="symbol">\d</span>frac&#123;-b <span class="symbol">\p</span>m <span class="symbol">\s</span>qrt&#123;b^2 - 4ac&#125;&#125;&#123;2a&#125; $$</div><div class="line"></div><div class="line"><span class="symbol">\\</span>[ <span class="symbol">\f</span>rac&#123;1&#125;&#123;<span class="symbol">\B</span>igl(<span class="symbol">\s</span>qrt&#123;<span class="symbol">\p</span>hi <span class="symbol">\s</span>qrt&#123;5&#125;&#125;-<span class="symbol">\p</span>hi<span class="symbol">\B</span>igr) e^&#123;<span class="symbol">\f</span>rac25 <span class="symbol">\p</span>i&#125;&#125; =</div><div class="line">1+<span class="symbol">\f</span>rac&#123;e^&#123;-2<span class="symbol">\p</span>i&#125;&#125; &#123;1+<span class="symbol">\f</span>rac&#123;e^&#123;-4<span class="symbol">\p</span>i&#125;&#125; &#123;1+<span class="symbol">\f</span>rac&#123;e^&#123;-6<span class="symbol">\p</span>i&#125;&#125;</div><div class="line">&#123;1+<span class="symbol">\f</span>rac&#123;e^&#123;-8<span class="symbol">\p</span>i&#125;&#125; &#123;1+<span class="symbol">\l</span>dots&#125; &#125; &#125; &#125; <span class="symbol">\\</span>]</div><div class="line"></div><div class="line">行内公式： $<span class="symbol">\G</span>amma(n) = (n-1)!<span class="symbol">\q</span>uad<span class="symbol">\f</span>orall n<span class="symbol">\i</span>n<span class="symbol">\m</span>athbb N$</div></pre></td></tr></table></figure>
-<p>效果如下（<code>Preferences</code> - <code>Themes</code> - <code>Enable MathJax</code> 才会看到效果）：</p>
-<p>块级公式：<br>$$    x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$</p>
-<p>\[ \frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} =<br>1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}}<br>{1+\frac{e^{-8\pi}} {1+\ldots} } } } \]</p>
-<p>行内公式： $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$</p>
-<h2 id="脚注（Footnote）"><a href="#脚注（Footnote）" class="headerlink" title="脚注（Footnote）"></a>脚注（Footnote）</h2><p>Markdown 语法：</p>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是一个脚注：<span class="string">[^sample_footnote]</span></div></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<p>这是一个脚注：<a href="这里是脚注信息">^sample_footnote</a></p>
-<h2 id="注释和阅读更多"><a href="#注释和阅读更多" class="headerlink" title="注释和阅读更多"></a>注释和阅读更多</h2><!-- comment -->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/28/Markdown-语法的简单使用/#more" rel="contents">
@@ -1418,9 +1315,7 @@ View的绘制机制：最主要掌握onMeasure,onLayout,onDraw以及相关类的
 
       
         
-          
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
-          ...
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/04/hello-world/#more" rel="contents">
