@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="android:clipChildren属性的用法 是否限制子View在父View的范围内,默认为ture     如上,我们遇到这种需求的时候,可能布局写得比较复杂，但是我们在xml的根布局添加1  &amp;lt;?xml version=”1.0” encoding=”utf-8”?&amp;gt;                                   12&amp;lt;!-- more --&amp;gt">
+<meta name="description" content="android:clipChildren属性的用法 是否限制子View在父View的范围内,默认为ture">
 <meta name="keywords" content="小技巧">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android开发小技巧">
 <meta property="og:url" content="http://leoncommons.cn/2017/12/07/Android开发小技巧/index.html">
 <meta property="og:site_name" content="看见LEON">
-<meta property="og:description" content="android:clipChildren属性的用法 是否限制子View在父View的范围内,默认为ture     如上,我们遇到这种需求的时候,可能布局写得比较复杂，但是我们在xml的根布局添加1  &amp;lt;?xml version=”1.0” encoding=”utf-8”?&amp;gt;                                   12&amp;lt;!-- more --&amp;gt">
+<meta property="og:description" content="android:clipChildren属性的用法 是否限制子View在父View的范围内,默认为ture">
 <meta property="og:image" content="http://oxp7ffm1s.bkt.clouddn.com/1512556710820.jpg">
-<meta property="og:updated_time" content="2017-12-07T03:17:20.072Z">
+<meta property="og:updated_time" content="2017-12-07T03:19:30.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发小技巧">
-<meta name="twitter:description" content="android:clipChildren属性的用法 是否限制子View在父View的范围内,默认为ture     如上,我们遇到这种需求的时候,可能布局写得比较复杂，但是我们在xml的根布局添加1  &amp;lt;?xml version=”1.0” encoding=”utf-8”?&amp;gt;                                   12&amp;lt;!-- more --&amp;gt">
+<meta name="twitter:description" content="android:clipChildren属性的用法 是否限制子View在父View的范围内,默认为ture">
 <meta name="twitter:image" content="http://oxp7ffm1s.bkt.clouddn.com/1512556710820.jpg">
 
 
@@ -357,14 +357,14 @@
 
       
         <h3 id="android-clipChildren属性的用法"><a href="#android-clipChildren属性的用法" class="headerlink" title="android:clipChildren属性的用法"></a>android:clipChildren属性的用法</h3><blockquote>
-<p>是否限制子View在父View的范围内,默认为ture  </p>
+<p>是否限制子View在父View的范围内,默认为ture<br><a id="more"></a></p>
 </blockquote>
 <p><img src="http://oxp7ffm1s.bkt.clouddn.com/1512556710820.jpg" alt="示例"></p>
 <p>如上,我们遇到这种需求的时候,可能布局写得比较复杂，但是我们在xml的根布局添加<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure></p>
 <p>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;</p>
 <relativelayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:clipchildren="false" 一定要在根布局添加才有效="" android:orientation="vertical" tools:context="com.wangjun.testandroidapi.MainActivity"><br><br>    <linearlayout android:layout_width="match_parent" android:layout_height="40dp" android:layout_alignparentbottom="true" android:background="#90c7c4c4" android:gravity="bottom" android:orientation="horizontal"><br><br>        <imageview android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1" android:src="@mipmap/ic_launcher"><br><br>        <imageview android:layout_width="match_parent" android:layout_height="60dp" android:layout_weight="1" android:src="@mipmap/ic_launcher"><br><br>        <imageview android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1" android:src="@mipmap/ic_launcher"><br><br>    </imageview></imageview></imageview></linearlayout><br><br></relativelayout>
 
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- more --&gt;</span></div><div class="line">### Material Design Button Styles</div></pre></td></tr></table></figure>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### Material Design Button Styles</div></pre></td></tr></table></figure>
 <p>style=”@style/Widget.AppCompat.Button”<br>style=”@style/Widget.AppCompat.Button.Colored”<br>style=”@style/Widget.AppCompat.Button.Borderless”<br>style=”@style/Widget.AppCompat.Button.Borderless.Colored”<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="quote">&gt; 在AppCompat Support Library 定义了几个很有用的style,当我们遇到button想要拥有统一的点击效果，又不局限与去手写selector或者ripple的时候，我们不妨试试这种：</span></div><div class="line"></div><div class="line">![<span class="string">Widget.AppCompat.Button</span>](<span class="link">https://i.stack.imgur.com/8qFww.png</span>)</div></pre></td></tr></table></figure></p>
 <p><button style="@style/Widget.AppCompat.Button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/simple_button"><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">![<span class="string">Widget.AppCompat.Button.Colored</span>](<span class="link">https://i.stack.imgur.com/Xa3cE.png</span>)</div></pre></td></tr></table></figure></button></p>
 <p><button style="@style/Widget.AppCompat.Button.Colored" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/simple_button"><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">![<span class="string">Widget.AppCompat.Button.Borderless</span>](<span class="link">https://i.stack.imgur.com/XO8G9.png</span>)</div></pre></td></tr></table></figure></button></p>
