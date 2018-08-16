@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://developer.android.com/reference/android/support/constraint/resources/images/barrier-end.png">
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/7a468e2de3cbce69974f3bef9fd72570/xmlnote/C059ECD8CFB9474EAB8120C6326CEA32/2744">
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/7a468e2de3cbce69974f3bef9fd72570/xmlnote/03AD6025BC9F4A069931EF4D111F62D9/2763">
-<meta property="og:updated_time" content="2018-07-05T01:29:33.693Z">
+<meta property="og:updated_time" content="2018-08-16T10:59:47.569Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android ConstraintLayout 最新使用小结">
 <meta name="twitter:description" content="前言ConstraintLayout是谷歌2016年I/O大会发布的新型的layout布局,当然到现在已经在很多的APP中大范围使用了，关于好处除了官方文档各大博客也都说的很详细了，总之我觉得ConstraintLayout带来的最大好处就是ConstraintLayout可以最大化的减少复杂布局的层级嵌套，实现布局的扁平化，提升页面的渲染速度。">
@@ -399,7 +399,7 @@
 <p>外边距不用多说，和一般的布局使用方法一样</p>
 <p>具体属性：</p>
 <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">android:</span>layout_marginStart</div><div class="line"><span class="symbol">android:</span>layout_marginEnd</div><div class="line"><span class="symbol">android:</span>layout_marginLeft</div><div class="line"><span class="symbol">android:</span>layout_marginTop</div><div class="line"><span class="symbol">android:</span>layout_marginRight</div><div class="line"><span class="symbol">android:</span>layout_marginBottom</div></pre></td></tr></table></figure>
-<h4 id="goneMargin-隐藏边距"><a href="#goneMargin-隐藏边距" class="headerlink" title="goneMargin 隐藏边距"></a>goneMargin 隐藏边距</h4><p>这个属性很有意思的，使用方法大家一看就明白了，当约束目标为View.GONE是，那么他的边距也会同样被隐藏</p>
+<h4 id="goneMargin-隐藏边距"><a href="#goneMargin-隐藏边距" class="headerlink" title="goneMargin 隐藏边距"></a>goneMargin 隐藏边距</h4><p>这个属性很有意思的，使用方法大家一看就明白了，当前View与另一个View绑定后，另一个View的属性设置为了Gone，则该属性会生效</p>
 <p>具体属性：</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">layout_goneMarginStart</span></div><div class="line">layout_goneMarginEnd</div><div class="line">layout_goneMarginLeft</div><div class="line">layout_goneMarginTop</div><div class="line">layout_goneMarginRight</div><div class="line">layout_goneMarginBottom</div></pre></td></tr></table></figure>
 <h4 id="bias-权重，占比"><a href="#bias-权重，占比" class="headerlink" title="bias 权重，占比"></a>bias 权重，占比</h4><p>在说bias这个属性之前我们先看下一下如何让约束的目标居中（横向、纵向、整体居中）</p>
